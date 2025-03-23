@@ -1,0 +1,16 @@
+<form hx-post="/operations/add" hx-target="#operations-list" hx-swap="innerHTML">
+    <label for="user_id">User ID:</label>
+    <input type="number" id="user_id" name="user_id" required>
+
+    <label for="type">Type:</label>
+    <select id="type" name="type">
+        <option value="income">Income</option>
+        <option value="expense">Expense</option>
+    </select>
+
+    <label for="amount">Amount:</label>
+    <input type="number" step="0.01" id="amount" name="amount" required>
+
+    <button type="submit">Add</button>
+</form>
+

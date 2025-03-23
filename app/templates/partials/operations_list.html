@@ -1,0 +1,21 @@
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>User ID</th>
+        <th>Type</th>
+        <th>Amount</th>
+        <th>Year</th>
+        <th>Month</th>
+    </tr>
+    {% for operation in operations %}
+    <tr>
+        <td>{{ operation.id }}</td>
+        <td>{{ operation.user_id }}</td>
+        <td>{{ operation.type }}</td>
+        <td>${{ operation.amount }}</td>
+        <td>{{ operation.year }}</td>
+        <td>{{ operation.month }}</td>
+    </tr>
+    {% endfor %}
+</table>
+

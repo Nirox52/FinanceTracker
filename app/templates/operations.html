@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Financial Operations</h1>
+
+    <!-- Кнопка для открытия формы -->
+    <button hx-get="/operations/new" hx-target="#operation-form" hx-swap="innerHTML">
+        Add Operation
+    </button>
+
+    <!-- Блок для формы -->
+    <div id="operation-form"></div>
+
+    <!-- Кнопка загрузки списка операций -->
+    <button hx-get="/operations/list" hx-target="#operations-list" hx-swap="innerHTML">
+        Load Last 10 Operations
+    </button>
+
+    <!-- Блок для списка операций -->
+    <div id="operations-list"></div>
+{% endblock %}
+

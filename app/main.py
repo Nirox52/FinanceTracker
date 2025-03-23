@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-from app.routes import home, users
+from app.routes import home, users, operations
 
 app = FastAPI()
 
@@ -11,3 +11,4 @@ app.mount("/static", StaticFiles(directory="app/static"), name="static")
 # Подключение маршрутов
 app.include_router(home.router)
 app.include_router(users.router)
+app.include_router(operations.router)

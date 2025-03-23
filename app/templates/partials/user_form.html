@@ -1,6 +1,22 @@
-<form hx-post="/users/create" hx-target="#users-list" hx-swap="innerHTML">
+<form hx-post="/users/create" hx-target="#user-message" hx-swap="innerHTML">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required>
     <button type="submit">Create</button>
 </form>
+
+<!-- Блок для отображения сообщения -->
+<div id="user-message"></div>
+
+<script>
+    document.body.addEventListener("htmx:afterRequest", function(event) {
+        if (event.detail.xhr.response) {
+            let response = JSON.parse(event.detail.xhr.response);
+            if (response.token) {
+                localStorage.setItem("jwt_token", response.token);
+                document.getElementById("user-message").innerHTML = 
+                    `<p>User created: ${response.name}</p><p>Token saved in LocalStorage</p>`;
+            }
+        }
+    });
+</script>
 

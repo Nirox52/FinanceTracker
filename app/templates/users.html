@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Users</h1>
+
+    <!-- Кнопка для открытия формы -->
+    <button hx-get="/users/new" hx-target="#user-form" hx-swap="innerHTML">
+        Add User
+    </button>
+
+    <!-- Блок для формы -->
+    <div id="user-form"></div>
+
+    <!-- Кнопка загрузки списка пользователей -->
+    <button hx-get="/users/list" hx-target="#users-list" hx-swap="innerHTML">
+        Load Users
+    </button>
+
+    <!-- Блок для списка пользователей -->
+    <div id="users-list"></div>
+{% endblock %}
+

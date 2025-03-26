@@ -10,12 +10,22 @@
     <!-- Блок для формы -->
     <div id="operation-form"></div>
 
-    <!-- Кнопка загрузки списка операций -->
-    <button hx-get="/operations/list" hx-target="#operations-list" hx-swap="innerHTML">
-        Load Last 10 Operations
-    </button>
+    <!-- Кнопки фильтрации -->
+    <div>
+        <button hx-get="/operations/list?type_filter=all" hx-target="#operations-list" hx-swap="innerHTML">
+            All
+        </button>
+        <button hx-get="/operations/list?type_filter=income" hx-target="#operations-list" hx-swap="innerHTML">
+            Income
+        </button>
+        <button hx-get="/operations/list?type_filter=expense" hx-target="#operations-list" hx-swap="innerHTML">
+            Expense
+        </button>
+    </div>
 
     <!-- Блок для списка операций -->
-    <div id="operations-list"></div>
+    <div id="operations-list" hx-get="/operations/list" hx-trigger="load">
+        <!-- Тут будет список -->
+    </div>
 {% endblock %}
 

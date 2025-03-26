@@ -5,9 +5,10 @@ CREATE TABLE users (
 
 CREATE TABLE operations (
     id SERIAL PRIMARY KEY,
-    user_id INT REFERENCES users(id) ON DELETE CASCADE,
+    username VARCHAR(50),
     type VARCHAR(50) NOT NULL,
     amount DECIMAL(10, 2) NOT NULL,
+	category VARCHAR(50),
     year INT NOT NULL,
     month INT NOT NULL CHECK (month BETWEEN 1 AND 12)
 );

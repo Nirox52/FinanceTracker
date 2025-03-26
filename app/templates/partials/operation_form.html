@@ -1,6 +1,9 @@
 <form hx-post="/operations/add" hx-target="#operations-list" hx-swap="innerHTML">
-    <label for="user_id">User ID:</label>
-    <input type="number" id="user_id" name="user_id" required>
+    <label for="username">Username</label>
+    <select id="username" name="username">
+        <option value="guest">Guest</option>
+		<!-- TODO:Add geted names from DB -->
+    </select>
 
     <label for="type">Type:</label>
     <select id="type" name="type">

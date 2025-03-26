@@ -1,7 +1,7 @@
 <table border="1">
     <tr>
         <th>ID</th>
-        <th>User ID</th>
+        <th>Username</th>
         <th>Type</th>
         <th>Amount</th>
         <th>Year</th>
@@ -10,7 +10,7 @@
     {% for operation in operations %}
     <tr>
         <td>{{ operation.id }}</td>
-        <td>{{ operation.user_id }}</td>
+        <td>{{ operation.username }}</td>
         <td>{{ operation.type }}</td>
         <td>${{ operation.amount }}</td>
         <td>{{ operation.year }}</td>
@@ -18,4 +18,8 @@
     </tr>
     {% endfor %}
 </table>
+
+{% if not operations %}
+<p>No operations found.</p>
+{% endif %}
 

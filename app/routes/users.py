@@ -14,6 +14,8 @@ async def get_users(request: Request):
 @router.get("/list", response_class=HTMLResponse)
 async def get_users_list(request: Request, db=Depends(get_db)):
     users = await db.fetch("SELECT id, name FROM users")
+    for id,user in enumerate(users):
+        users[id] = user['name']
     return templates.TemplateResponse("partials/users_list.html", {"request": request, "users": users})
 
 @router.get("/new", response_class=HTMLResponse)

@@ -2,7 +2,9 @@
     <label for="username">Username</label>
     <select id="username" name="username">
         <option value="guest">Guest</option>
-		<!-- TODO:Add geted names from DB -->
+		{% for username in users %}
+        <option value={{username}}>{{username}}</option>
+		{% endfor %}
     </select>
 
     <label for="type">Type:</label>

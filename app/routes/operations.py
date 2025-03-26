@@ -37,9 +37,14 @@ async def get_latest_operations(request: Request, db=Depends(get_db), type_filte
     })
 
 @router.get("/new", response_class=HTMLResponse)
-async def show_operation_form(request: Request):
+async def show_operation_form(request: Request,db=Depends(get_db)):
     """Возвращает HTML-форму для добавления операции"""
-    return templates.TemplateResponse("partials/operation_form.html", {"request": request})
+    values = []
+    query = "SELECT name FROM users"
+    users = await db.fetch(query, *values) if values else await db.fetch(query)
+    for id,user in enumerate(users):
+        users[id] = user['name']
+    return templates.TemplateResponse("partials/operation_form.html", {"request": request,"users":users})
 
 @router.post("/add", response_class=JSONResponse)
 async def add_operation(request: Request, username: str = Form(...), type: str = Form(...), amount: float = Form(...), db=Depends(get_db)):
